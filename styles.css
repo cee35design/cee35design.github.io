@@ -25,7 +25,7 @@ body::before {
     height: 100%;
     background: url('bg.jpg') no-repeat center center fixed;
     background-size: cover;
-    filter: blur(100px);
+    filter: blur(50px); /* reduced blur for better performance */
     z-index: -1;
 }
 
@@ -40,6 +40,31 @@ header {
     font-weight: 700;
     border-bottom: 4px solid #333; /* Neobrutalism: thick border */
     box-shadow: 0 8px 0 rgba(0,0,0,0.8); /* Harsh shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+header:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 0 rgba(0,0,0,0.9);
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
 
 header h1 {
@@ -113,6 +138,11 @@ header p {
     transform: translateY(-5px);
 }
 
+.project-link:active .project {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 0 0 1px #333; /* Pressed down effect */
+}
+
 footer {
     position: fixed;
     bottom: 1rem;
@@ -148,9 +178,37 @@ footer {
     box-shadow: 0 6px 0 rgba(0,0,0,0.7); /* Deeper shadow on hover */
 }
 
+.back-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.7); /* Pressed down effect */
+}
+
+footer a {
+    color: #667eea;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+footer a:hover {
+    color: white;
+    text-shadow: 0 0 10px #667eea;
+}
+
 .content {
     padding: 3rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center; /* center the text */
+}
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a; /* Match your background */
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #7c3aed, #3b82f6);
+  border-radius: 10px;
 }
